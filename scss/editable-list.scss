@@ -1,0 +1,110 @@
+//Import jviz
+@import "{JVIZ_MODULES}jviz/scss/all";
+
+//Import dependencies
+@import "btn";
+
+//Editable list class
+.jviz-modules-editable-list
+{
+  //Style
+  display: block; width: 100%;
+
+  //Margin
+  margin: { top: 0px; bottom: 10px; }
+
+  //Table
+  &-table
+  {
+    //Style
+    display: table; width: 100%; overflow-x: hide;
+
+    //Border
+    border: { collapse: separate; width: 0px; spacing: 0px 10px; }
+  }
+
+  //Row
+  &-row
+  {
+    //Style
+    display: table-row;
+  }
+
+  //Cell
+  &-cell, &-cell-last
+  {
+    //Style
+    display: table-cell; vertical-align: middle;
+
+    //Background
+    background-color: $jvizGrey2;
+
+    //Padding
+    padding: { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+
+    //First child
+    &:first-child
+    {
+      //Border top left
+      border-top-left-radius: 5px !important;
+
+      //Border bottom left
+      border-bottom-left-radius: 5px !important;
+    }
+
+    //Last child
+    &:last-child
+    {
+      //Border top right
+      border-top-right-radius: 5px !important;
+
+      //Border bottom right
+      border-bottom-right-radius: 5px !important;
+    }
+  }
+
+  //Last cell
+  &-cell-last { width: 80px !important; }
+
+  //Title
+  &-title
+  {
+    //Style
+    display: block; line-height: 20px;
+
+    //Font
+    @include jvizFont; font-weight: bold; font-size: 16px;
+  }
+
+  //Detail
+  &-detail
+  {
+    //Style
+    display: block; line-height: 15px;
+
+    //Font
+    @include jvizFont; font-size: 12px;
+
+    //Margin
+    margin: { top: 2px; }
+  }
+
+  //Buttons
+  &-btn
+  {
+    //Edit button
+    &-edit { @include jvizBtnIcon($jvizBlue2, $jvizBlue3); @include Btn; }
+
+    //Delete button
+    &-delete { @include jvizBtnIcon($jvizRed2, $jvizRed3); @include Btn; }
+
+    //Save button
+    &-save { @include jvizBtnIcon($jvizGreen2, $jvizGreen3); @include Btn; }
+
+    //Cancel button
+    &-cancel { @include jvizBtnIcon($jvizRed2, $jvizRed3); @include Btn; }
+  }
+
+  //Input
+  &-input { @include jvizInputFluid($jvizWhite); }
+}
