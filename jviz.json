@@ -1,0 +1,16 @@
+{
+  "name": "jviz-editablelist",
+  "description": "A module to build an editable list",
+  "version": "0.0.1",
+	"contributors": { "id": "jmjuanes", "name": "Josemi Juanes", "email": "josemijuanes@gmail.com" },
+  "directory": "./build",
+  "tasks":
+  {
+    "build:js": { "task": "concat", "src": [ "./js/editablelist.js", "./js/**/*.js" ], "dest": "./jviz-editablelist.js" },
+    "build:sass": { "task": "compile:sass", "src": "./scss/**.scss", "dest": "./" }
+  },
+	"build": [ "build:js", "build:sass" ],
+  "install": [ ],
+	"dependencies": { "jviz": "dev" }
+}
+}
