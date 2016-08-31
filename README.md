@@ -2,11 +2,19 @@
 
 A module to build an editable list
 
+## Install
+
+Use `jviz` to install this module on your project:
+
+```
+jviz install jviz-editable-list
+```
+
 ## Options
 
 ### columnInfo
 
-An object with the information about the column info. The column info is the first cell of each element of the list, that provides information about the element.
+An object with the information about the column info. The column info is the first cell of each element of the list, and provides information about the element.
 
 ```javascript
 jviz.modules.editableList({
