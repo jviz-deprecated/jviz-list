@@ -25,6 +25,23 @@ jviz.modules.editableList = function(opt)
   //Columns list
   this._columns = {};
   this._columns.src = (typeof opt.columns === 'undefined') ? [] : opt.columns; //Columns source
+  this._columns.info = {}; //Column info
+  this._columns.info.active = false; //Column info is active
+  this._columns.info.title = ''; //Column info title
+  this._columns.info.detail = ''; //Column info detail
+
+  //Check if is enabled
+  if(typeof opt.columnInfo !== 'undefined')
+  {
+    //Save active
+    if(typeof opt.columnInfo.active === 'boolean'){ this._columns.info.active = opt.columnInfo.active; }
+
+    //Save the column info title
+    if(typeof opt.columnInfo.title !== 'undefined'){ this._columns.info.title = opt.columnInfo.title; }
+
+    //Save the column info description
+    if(typeof opt.columnInfo.detail !== 'undefined'){ this._columns.info.detail = opt.columnInfo.detail; }
+  }
 
   //Table object
   this._table = {};
@@ -41,18 +58,16 @@ jviz.modules.editableList = function(opt)
   this._cell.id = this._id + '-cell'; //Cell ID
   this._cell.class = this._class + '-cell'; //Cell class
 
-  //Group
-  this._group = {};
-  this._group.id = this._id + '-group'; //Group ID
-  this._group.class = this._class + '-group'; //Group class
-  this._group.title = this._group.class + '-title'; //Group title class
-  this._group.detail = this._group.class + '-detail'; //Group detail class
-  this._group.helper = this._group.class + '-helper'; //Group helper class
-
   //Input
   this._input = {};
   this._input.id = this._id + '-input'; //Input ID
   this._input.class = this._class + '-input'; //Input class
+
+  //Text type
+  this._text = {};
+  this._text.title = this._class + '-title'; //Title text class
+  this._text.value = this._class + '-value'; //Value text class
+  this._text.detail = this._class + '-detail'; //Detail text class
 
   //Events object
   this._events = {};
