@@ -66,28 +66,14 @@
   //Last cell
   &-cell-last { width: 80px !important; }
 
-  //Title
-  &-title
-  {
-    //Style
-    display: block; line-height: 20px;
+  //Title text
+  &-title { display: block; line-height: 20px; @include jvizFont; font-weight: bold; font-size: 16px; }
 
-    //Font
-    @include jvizFont; font-weight: bold; font-size: 16px;
-  }
+  //Value text
+  &-value { display: block; line-height: 20px; @include jvizFont; font-size: 16px; }
 
   //Detail
-  &-detail
-  {
-    //Style
-    display: block; line-height: 15px;
-
-    //Font
-    @include jvizFont; font-size: 12px;
-
-    //Margin
-    margin: { top: 2px; }
-  }
+  &-detail { display: block; line-height: 15px; @include jvizFont; font-size: 12px; margin: { top: 2px; } }
 
   //Buttons
   &-btn
