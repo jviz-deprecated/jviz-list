@@ -1,4 +1,4 @@
-# jviz-editable-list
+# editable-list
 
 A module to build an editable list
 
@@ -11,6 +11,39 @@ jviz install jviz-editable-list
 ```
 
 ## Options
+
+### data
+
+An array that will be used as the data to be displayed on the list. Each element of the array must be an object where each key is a cell on the list.
+
+```javascript
+jviz.modules.editableList({
+  data: [
+    { name: 'John', age: 26, city: 'San Francisco', country: 'EEUU' },
+    { name: 'Susan', age: 24, city: 'New York', country: 'EEUU' },
+    { name: 'Steve', age: 30, city: 'Tokyo', country: 'Japan' }
+  ]
+});
+```
+
+### columns
+
+An array with the columns to display on the list.
+
+```javascript
+jviz.modules.editableList({
+  columns: [
+    { key: 'name' , editable: false }
+  ]
+});
+```
+
+Each element of the array must be an object with the following keys:
+
+- `key`: (**mandatory**) a string with the key of the `data` which value will be displayed on this column.
+- `editable`: a boolean to set if the data of this column is editable or not. Default value: `true`.
+- `helper`: a string that will be displayed on the bottom of the input at the edit mode.
+
 
 ### columnInfo
 
