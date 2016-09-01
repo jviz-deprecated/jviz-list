@@ -81,3 +81,18 @@ A string or function with the title of the element. If a function si passed, thi
 #### detail
 
 (Optionally) A string or function with the detail of the element. If a function is passed, this will be called with the same arguments of the `title` key.
+
+## API
+
+### delete(index)
+
+Delete an element from the list.
+
+```javascript
+//Delete the first element of the list
+list.delete(0);
+```
+
+This method accepts the following arguments:
+
+- `index`: the number of the element of the list that will be deleted.
