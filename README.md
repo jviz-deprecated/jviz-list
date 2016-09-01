@@ -96,3 +96,16 @@ list.delete(0);
 This method accepts the following arguments:
 
 - `index`: the number of the element of the list that will be deleted.
+
+### save(index, obj)
+
+Update an element of the list.
+
+```javascript
+list.save(0, { key1: 'value1', key2: 'value2' });
+```
+
+This method accepts the following arguments:
+
+- `index`: the number of the element of the list.
+- `obj`: an object with the data that will be updated on the element of the list.
