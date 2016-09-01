@@ -66,15 +66,6 @@
   //Last cell
   &-cell-last { width: 80px !important; }
 
-  //Title text
-  &-title { display: block; line-height: 20px; @include jvizFont; font-weight: bold; font-size: 16px; }
-
-  //Value text
-  &-value { display: block; line-height: 20px; @include jvizFont; font-size: 16px; }
-
-  //Detail
-  &-detail { display: block; line-height: 15px; @include jvizFont; font-size: 12px; margin: { top: 2px; } }
-
   //Buttons
   &-btn
   {
@@ -92,5 +83,21 @@
   }
 
   //Input
-  &-input { @include jvizInputFluid($jvizWhite); }
+  &-input
+  {
+    //Include fluid input
+    @include jvizInputFluid($jvizWhite);
+    
+    //Heper
+    &-helper { @include jvizFont; font-size: 12px; display: block; margin-top: 5px; }
+  }
+
+  //Title text
+  &-title { display: block; line-height: 20px; @include jvizFont; font-weight: bold; font-size: 16px; }
+
+  //Value text
+  &-value { display: block; line-height: 20px; @include jvizFont; font-size: 16px; }
+
+  //Detail
+  &-detail { display: block; line-height: 15px; @include jvizFont; font-size: 12px; margin: { top: 2px; } }
 }
