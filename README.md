@@ -84,6 +84,21 @@ A string or function with the title of the element. If a function si passed, thi
 
 ## API
 
+### cancel(index)
+
+Cancel the edition of one element of the list.
+
+```javascript
+//Edit the first element
+list.edit(0);
+
+//Cancel the edition of the first element and restore the values
+list.cancel(0);
+```
+This method accepts the following arguments:
+
+- `index`: the number of the element of the list.
+
 ### delete(index)
 
 Delete an element from the list.
@@ -96,6 +111,20 @@ list.delete(0);
 This method accepts the following arguments:
 
 - `index`: the number of the element of the list that will be deleted.
+
+### edit(index)
+
+Edit the content of an element of the list.
+
+```javascript
+//Set an element of the list as editable
+list.edit(0);
+```
+
+This method accepts the following arguments:
+
+- `index`: the number of the element of the list.
+
 
 ### save(index, obj)
 
