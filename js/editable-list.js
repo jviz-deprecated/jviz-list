@@ -16,6 +16,9 @@ jviz.modules.editableList = function(opt)
   //Save the list title
   this._title = (typeof opt.title === 'undefined') ? '' : opt.title;
 
+  //Check for editable list
+  this._editable = (typeof opt.editable === 'undefined') ? true : opt.editable;
+
   //Data
   this._data = {};
   this._data.ajax = (typeof opt.ajax === 'undefined') ? {} : opt.ajax;
@@ -57,17 +60,40 @@ jviz.modules.editableList = function(opt)
   this._cell = {};
   this._cell.id = this._id + '-cell'; //Cell ID
   this._cell.class = this._class + '-cell'; //Cell class
+  this._cell.last = this._cell.class + '-last'; //Last cell class
 
   //Input
   this._input = {};
   this._input.id = this._id + '-input'; //Input ID
   this._input.class = this._class + '-input'; //Input class
+  this._input.helper = this._input.class + '-helper'; //Input helper class
 
   //Text type
   this._text = {};
   this._text.title = this._class + '-title'; //Title text class
   this._text.value = this._class + '-value'; //Value text class
   this._text.detail = this._class + '-detail'; //Detail text class
+
+  //Button
+  this._btn = {};
+  this._btn.id = this._id + '-btn'; //Button ID
+  this._btn.class = this._class + '-btn'; //Button class
+  this._btn.edit = {}; //Edit button
+  this._btn.edit.alt = 'Edit'; //Edit button title
+  this._btn.edit.id = this._btn.id + '-edit'; //Edit button id
+  this._btn.edit.class = this._btn.class + '-edit'; //Edit button class
+  this._btn.delete = {};
+  this._btn.delete.alt = 'Delete'; //Delete button title
+  this._btn.delete.id = this._btn.id + '-delete'; //Delete button id
+  this._btn.delete.class = this._btn.class + '-delete'; //Delete button class
+  this._btn.save = {};
+  this._btn.save.alt = 'Save'; //Save button title
+  this._btn.save.id = this._btn.id + '-save'; //Save button id
+  this._btn.save.class = this._btn.class + '-save'; //Save button class
+  this._btn.cancel = {};
+  this._btn.cancel.alt = 'Cancel'; //Cancel button title
+  this._btn.cancel.id = this._btn.id + '-cancel'; //Cancel button id
+  this._btn.cancel.class = this._btn.class + '-cancel'; //Cancel button class
 
   //Events object
   this._events = {};
