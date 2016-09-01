@@ -15,7 +15,7 @@ jviz.modules.editableList.prototype.on = function(name, cb)
 jviz.modules.editableList.prototype.onCall = function(name)
 {
   //Check the event
-  if(typeof this._events[name] !== 'function'){ return; }
+  if(typeof this._events[name] !== 'function'){ return true; }
 
   //Initialize the arguments array
   var args = [];
