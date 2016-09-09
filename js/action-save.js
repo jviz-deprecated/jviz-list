@@ -12,4 +12,7 @@ jviz.modules.editableList.prototype.save = function(index, obj)
 
   //Update the element
   this.display(this._data.src[index], index, false);
+
+  //Add the events
+  this.btnEvents(index, false);
 };
