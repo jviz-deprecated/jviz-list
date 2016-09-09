@@ -3,11 +3,11 @@
   <!-- Styles -->
   <link rel="stylesheet" type="text/css" href="../build/jviz/font.css">
   <link rel="stylesheet" type="text/css" href="../build/jviz/jviz.css">
-  <link rel="stylesheet" type="text/css" href="../build/jviz-editable-list/editable-list.css">
+  <link rel="stylesheet" type="text/css" href="../build/editable-list/editable-list.css">
   <!-- JavaScript -->
   <script type="text/javascript" src="../build/jviz/vendor/jquery.min.js"></script>
   <script type="text/javascript" src="../build/jviz/jviz.js"></script>
-  <script type="text/javascript" src="../build/jviz-editable-list/editable-list.js"></script>
+  <script type="text/javascript" src="../build/editable-list/editable-list.js"></script>
 </head>
 <body class="jviz-body" style="padding:50px;">
   <script type="text/javascript">
@@ -23,7 +23,7 @@
       //Columns
       opt.columns =
       [
-        { key: 'key1', detail: 'Random integer', helper: 'Integer' },
+        { key: 'key1', detail: 'Random integer', helper: 'Integer', type: 'number' },
         { key: 'key2', detail: 'Randon string', helper: 'Non-empty string' },
         { key: 'key3', detail: 'Real index', editable: false }
       ];
