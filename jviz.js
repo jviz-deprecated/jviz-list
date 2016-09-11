@@ -35,7 +35,7 @@ pkg.install = [];
 pkg.tasks =
 {
   //Build js files
-  'build:js': [  {name: 'src', args: src_js }, { name: 'concat', args: 'editable-list.js' }, { name: 'dest', args: './' } ],
+  'build:js': [  { name: 'src', args: src_js }, { name: 'concat', args: 'editable-list.js' }, { name: 'dest', args: './' } ],
 
   //Build sass files
   'build:scss': [ { name: 'src', args: src_scss }, { name: 'sass' }, { name: 'dest', args: './' } ]
