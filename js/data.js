@@ -8,7 +8,7 @@ jviz.modules.editableList.prototype.data = function(data)
   if(jviz.is.array(data) === false){ data = [ data ]; }
 
   //Reset the container
-  jviz.dom.html('', this._table.id);
+  jviz.dom.html(this._table.id, '');
 
   //Initialize the active counter
   this._data.active = Array.apply(null, Array(this._data.src.length)).map(function(v){ return true; });
@@ -20,7 +20,7 @@ jviz.modules.editableList.prototype.data = function(data)
     var id = this._row.id + '-' + i;
 
     //Add the row
-    jviz.dom.append({ _tag: 'div', id: id, class: this._row.class }, this._table.id);
+    jviz.dom.append(this._table.id, { _tag: 'div', id: id, class: this._row.class });
 
     //Display the new element
     this.display(data[i], i, false);
