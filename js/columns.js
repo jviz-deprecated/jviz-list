@@ -1,6 +1,9 @@
 //Parse the columns list
 jviz.modules.editableList.prototype.columns = function(list)
 {
+  //Check for undefined columns
+  if(typeof list === 'undefined'){ var list = this._columns.src; }
+
   //Check for array
   if(jviz.is.array(list) === false){ list = [ list ]; }
 
@@ -8,7 +11,8 @@ jviz.modules.editableList.prototype.columns = function(list)
   list.map(function(el, index)
   {
     //Check the key
-    if(typeof el.key === 'undefined'){ throw new Error('No key on column ' + index); } 
+    if(typeof el.key === 'undefined'){ throw new Error('No key on column ' + index); }
+
     //Inpiut type
     if(typeof el.type === 'undefined'){ el.type = 'text'; }
 
