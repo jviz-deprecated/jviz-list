@@ -8,11 +8,14 @@ jviz.modules.editableList.prototype.build = function()
   jviz.dom.append(this._id, { _tag: 'div', id: this._table.id, class: this._table.class });
 
   //Parse the columns
-  this.columns(this._columns.src);
+  this.columns();
 
   //Get the data
   if(typeof this._data.ajax.url === 'string'){ return this.ajax(this._data.ajax); }
 
+  //Parse the data
+  this.data();
+
   //Display the data
-  return this.data(this._data.src);
+  return this.draw();
 };
