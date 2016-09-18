@@ -14,7 +14,7 @@ jviz.modules.editableList.prototype.delete = function(index)
   var removed = this._data.src.splice(index, 1);
 
   //Display the new data
-  this.data(this._data.src);
+  this.draw();
 
   //Return the removed element
   return removed;
