@@ -35,3 +35,13 @@ jviz.modules.editableList.prototype.columns = function(list)
   //Save the columns
   this._columns.src = list;
 };
+
+//Get the columns
+jviz.modules.editableList.prototype.getColumns = function(index)
+{
+  //Check the index
+  if(typeof index === 'undefined'){ return this._columns.src; }
+
+  //Return the column
+  return this._columns.src[index];
+};
