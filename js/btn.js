@@ -30,7 +30,7 @@ jviz.modules.editableList.prototype.btnEvents = function(index, edit)
 jviz.modules.editableList.prototype.clickEdit = function(e, index)
 {
   //Call the click event
-  var response = this.onCall('click:edit', this._data.src[index], index);
+  var response = this._events.emit('click:edit', this._data.src[index], index);
 
   //Check the response
   if(response === false){ return; }
@@ -43,7 +43,7 @@ jviz.modules.editableList.prototype.clickEdit = function(e, index)
 jviz.modules.editableList.prototype.clickDelete = function(e, index)
 {
   //Call the delete event
-  var response = this.onCall('click:delete', this._data.src[index], index);
+  var response = this._events.emit('click:delete', this._data.src[index], index);
 
   //Check the response
   if(response === false){ return; }
@@ -72,7 +72,7 @@ jviz.modules.editableList.prototype.clickSave = function(e, index)
   }
 
   //Call the save event
-  var response = this.onCall('click:save', obj, index);
+  var response = this._events.emit('click:save', obj, index);
 
   //Check the response
   if(response === false){ return; }
@@ -85,7 +85,7 @@ jviz.modules.editableList.prototype.clickSave = function(e, index)
 jviz.modules.editableList.prototype.clickCancel = function(e, index)
 {
   //Call the cancel event
-  var response = this.onCall('click:cancel', index);
+  var response = this._events.emit('click:cancel', index);
 
   //Check the response
   if(response === false){ return; }
