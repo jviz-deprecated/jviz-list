@@ -106,4 +106,4 @@ jviz.modules.editableList = function(opt)
 };
 
 //On method
-jviz.modules.simpleList.prototype.on = function(name, listener){ return this._events.add(name, listener); };
+jviz.modules.editableList.prototype.on = function(name, listener){ return this._events.add(name, listener); };
