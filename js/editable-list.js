@@ -96,7 +96,7 @@ jviz.modules.editableList = function(opt)
   this._btn.cancel.class = this._btn.class + '-cancel'; //Cancel button class
 
   //Events object
-  this._events = {};
+  this._events = new jviz.events();
 
   //Build the editable list
   this.build();
@@ -104,3 +104,6 @@ jviz.modules.editableList = function(opt)
   //Return this
   return this;
 };
+
+//On method
+jviz.modules.simpleList.prototype.on = function(name, listener){ return this._events.add(name, listener); };
