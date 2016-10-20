@@ -14,7 +14,7 @@ jviz.modules.editableList.prototype.draw = function()
     var id = this._row.id + '-' + i;
 
     //Add the row
-    jviz.dom.append(this._table.id, { _tag: 'div', id: id, class: this._row.class });
+    jviz.dom.append(this._table.id, { id: id, class: this._row.class });
 
     //Display the new element
     this.display(el, i, false);
