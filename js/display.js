@@ -29,13 +29,13 @@ jviz.modules.editableList.prototype.display = function(el, index, edit)
     if(title !== '')
     {
       //Add the info cell
-      jviz.dom.append(id_row, { _tag: 'div', id: id_info, class: this._cell.class });
+      jviz.dom.append(id_row, { id: id_info, class: this._cell.class });
 
       //Add the title
-      jviz.dom.append(id_info, { _tag: 'div', class: this._text.title, _html: title });
+      jviz.dom.append(id_info, { class: this._text.title, _html: title });
 
       //Check for add the detail
-      if(detail !== ''){ jviz.dom.append(id_info, { _tag: 'div', class: this._text.detail, _html: detail });  }
+      if(detail !== ''){ jviz.dom.append(id_info, { class: this._text.detail, _html: detail });  }
     }
   }
 
@@ -49,7 +49,7 @@ jviz.modules.editableList.prototype.display = function(el, index, edit)
     var id_cell = this._cell.id + '-' + index + '-' + i;
 
     //Generate the new cell
-    jviz.dom.append(id_row, { _tag: 'div', id: id_cell, class: this._cell.class });
+    jviz.dom.append(id_row, { id: id_cell, class: this._cell.class });
 
     //Check if is editable
     if(edit === true && col.editable === true)
@@ -83,7 +83,7 @@ jviz.modules.editableList.prototype.display = function(el, index, edit)
       if(col.helper !== '')
       {
         //Add the input helper
-        jviz.dom.append(id_cell, { _tag: 'div', class: this._input.helper, _html: col.helper });
+        jviz.dom.append(id_cell, { class: this._input.helper, _html: col.helper });
       }
 
       //Next
@@ -100,7 +100,7 @@ jviz.modules.editableList.prototype.display = function(el, index, edit)
     jviz.dom.append(id_cell, { _tag: 'div', class: this._text.value, _html: cell_value });
 
     //Check the cell detail
-    if(cell_detail !== ''){ jviz.dom.append(id_cell, { _tag: 'div', class: this._text.detail, _html: cell_detail }); }
+    if(cell_detail !== ''){ jviz.dom.append(id_cell, { class: this._text.detail, _html: cell_detail }); }
   }
 
   //Check for editable
@@ -110,24 +110,24 @@ jviz.modules.editableList.prototype.display = function(el, index, edit)
     var id_btn = this._cell.id + '-' + index + '-btn';
 
     //Add the button cell
-    jviz.dom.append(id_row, { _tag: 'div', id: id_btn, class: this._cell.last });
+    jviz.dom.append(id_row, { id: id_btn, class: this._cell.last });
 
     //Check the edit mode
     if(edit === true)
     {
       //Add the save button
-      jviz.dom.append(id_btn, { _tag: 'div', id: this._btn.save.id + '-' + index, class: this._btn.save.class, title: this._btn.save.alt });
+      jviz.dom.append(id_btn, { id: this._btn.save.id + '-' + index, class: this._btn.save.class, title: this._btn.save.alt });
 
       //Add the cancel button
-      jviz.dom.append(id_btn, { _tag: 'div', id: this._btn.cancel.id + '-' + index, class: this._btn.cancel.class, title: this._btn.cancel.alt });
+      jviz.dom.append(id_btn, { id: this._btn.cancel.id + '-' + index, class: this._btn.cancel.class, title: this._btn.cancel.alt });
     }
     else
     {
       //Add the edit button
-      jviz.dom.append(id_btn, { _tag: 'div', id: this._btn.edit.id + '-' + index, class: this._btn.edit.class, title: this._btn.edit.alt });
+      jviz.dom.append(id_btn, { id: this._btn.edit.id + '-' + index, class: this._btn.edit.class, title: this._btn.edit.alt });
 
       //Add the delete button
-      jviz.dom.append(id_btn, { _tag: 'div', id: this._btn.delete.id + '-' + index, class: this._btn.delete.class, title: this._btn.delete.alt });
+      jviz.dom.append(id_btn, { id: this._btn.delete.id + '-' + index, class: this._btn.delete.class, title: this._btn.delete.alt });
     }
   }
 
