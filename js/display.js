@@ -155,5 +155,5 @@ jviz.modules.editableList.prototype.display = function(el, index, edit)
   if(this._data.active[index] === true){ return; }
 
   //Hide this row
-  $('#').css('display', 'none');
+  //$('#').css('display', 'none');
 };
