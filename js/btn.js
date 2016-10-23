@@ -56,7 +56,7 @@ jviz.modules.editableList.prototype.clickDelete = function(e, index)
 jviz.modules.editableList.prototype.clickSave = function(e, index)
 {
   //Clone the object with the data
-  var obj = jviz.utils.clone(this._data.src[index]);
+  var obj = jviz.object.clone(this._data.src[index]);
 
   //Read all the columns
   for(var i = 0; i < this._columns.src.length; i++)
