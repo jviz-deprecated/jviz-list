@@ -5,7 +5,7 @@ jviz.modules.editableList = function(opt)
   if(typeof opt === 'undefined'){ var opt = {}; }
 
   //Save the component id
-  this._id = (typeof opt.id === 'undefined') ? jviz.utils.getID({ prefix: 'editablelist-', length: 5 }) : opt.id;
+  this._id = (typeof opt.id === 'undefined') ? jviz.misc.getID({ prefix: 'editablelist-', length: 5 }) : opt.id;
 
   //Save the component class name
   this._class = (typeof opt.class === 'undefined') ? 'jviz-modules-editable-list' : opt.class;
@@ -96,7 +96,7 @@ jviz.modules.editableList = function(opt)
   this._btn.cancel.class = this._btn.class + '-cancel'; //Cancel button class
 
   //Events object
-  this._events = new jviz.events();
+  this._events = new jviz.commons.events();
 
   //Build the editable list
   this.build();
