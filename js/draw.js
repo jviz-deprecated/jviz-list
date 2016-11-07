@@ -26,4 +26,7 @@ jviz.modules.editableList.prototype.draw = function()
     //Add the events
     this.btnEvents(i, false);
   }
+
+  //Return this
+  return this;
 };
