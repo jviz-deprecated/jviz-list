@@ -28,7 +28,7 @@
   }
 
   //Cell
-  &-cell, &-cell-last
+  &-cell
   {
     //Style
     display: table-cell; vertical-align: middle;
@@ -60,9 +60,6 @@
     }
   }
 
-  //Last cell
-  &-cell-last { width: 80px !important; }
-
   //Buttons
   &-btn
   {
@@ -92,14 +89,10 @@
   }
 
   //Input
-  &-input
-  {
-    //Include fluid input
-    @include jviz-input-fluid($jviz-white);
+  &-input { @include jviz-input-fluid($jviz-white); display: block; }
 
-    //Heper
-    &-helper { @include jviz-font; font-size: 12px; display: block; margin-top: 5px; }
-  }
+  //Helper
+  &-helper { @include jviz-font; font-size: 12px; display: block; margin-top: 5px; }
 
   //Title text
   &-title { display: block; line-height: 20px; @include jviz-font; font-weight: bold; font-size: 16px; }
