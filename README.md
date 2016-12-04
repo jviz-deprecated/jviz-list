@@ -45,16 +45,16 @@ Each element of the array must be an object with the following keys:
 - `helper`: a string that will be displayed on the bottom of the input at the edit mode.
 
 
-### columnInfo
+### info
 
 An object with the information about the column info. The column info is the first cell of each element of the list, and provides information about the element.
 
 ```javascript
 jviz.modules.editableList({
-  columnInfo:
+  info:
   {
     //Enable the column info
-    active: true,
+    visible: true,
 
     //Set the title for each element
     title: function(el, index){ return el.title; },
@@ -67,9 +67,9 @@ jviz.modules.editableList({
 
 This option accepts the following keys:
 
-#### active
+#### visible
 
-A boolean to set if the info cell is enabled or disabled. The default value is `false`.
+A boolean to set if the info cell is visible or not. The default value is `false`.
 
 #### title
 
