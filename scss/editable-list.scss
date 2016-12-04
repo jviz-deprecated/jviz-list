@@ -1,9 +1,6 @@
 //Import jviz
 @import "{JVIZ_MODULES}jviz/scss/all";
 
-//Import dependencies
-@import "btn";
-
 //Editable list class
 .jviz-modules-editable-list
 {
@@ -69,35 +66,47 @@
   //Buttons
   &-btn
   {
+    //Include the button mixin
+    @include jviz-btn-icon;
+
+    //Display
+    display: block !important; float: left; opacity: 1.0;
+
+    //Margin
+    margin: { right: 5px; }
+
     //Edit button
-    &-edit { @include jvizBtnIcon($jvizBlue2, $jvizBlue3); @include Btn; }
+    &--edit { background-color: $jviz-blue-2; }
 
     //Delete button
-    &-delete { @include jvizBtnIcon($jvizRed2, $jvizRed3); @include Btn; }
+    &--delete { background-color: $jviz-red-2; }
 
     //Save button
-    &-save { @include jvizBtnIcon($jvizGreen2, $jvizGreen3); @include Btn; }
+    &--save { background-color: $jvizz-green-2; }
 
     //Cancel button
-    &-cancel { @include jvizBtnIcon($jvizRed2, $jvizRed3); @include Btn; }
+    &--cancel { background-color: $jviz-red-2; }
+
+    //Button hover
+    &:hover { opacity: 0.8; }
   }
 
   //Input
   &-input
   {
     //Include fluid input
-    @include jvizInputFluid($jvizWhite);
-    
+    @include jviz-input-fluid($jviz-white);
+
     //Heper
-    &-helper { @include jvizFont; font-size: 12px; display: block; margin-top: 5px; }
+    &-helper { @include jviz-font; font-size: 12px; display: block; margin-top: 5px; }
   }
 
   //Title text
-  &-title { display: block; line-height: 20px; @include jvizFont; font-weight: bold; font-size: 16px; }
+  &-title { display: block; line-height: 20px; @include jviz-font; font-weight: bold; font-size: 16px; }
 
   //Value text
-  &-value { display: block; line-height: 20px; @include jvizFont; font-size: 16px; }
+  &-value { display: block; line-height: 20px; @include jviz-font; font-size: 16px; }
 
   //Detail
-  &-detail { display: block; line-height: 15px; @include jvizFont; font-size: 12px; margin: { top: 2px; } }
+  &-detail { display: block; line-height: 15px; @include jviz-font; font-size: 12px; margin: { top: 2px; } }
 }
