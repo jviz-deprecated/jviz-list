@@ -99,7 +99,7 @@ jviz.modules.editableList.prototype.row = function(index, edit)
       var value_text = el[col.key];
 
       //Add the cell value
-      jviz.dom.append(cell_id, { id: value_id, class: this._value.class, _html: cell_value });
+      jviz.dom.append(cell_id, { id: value_id, class: this._value.class, _html: value_text });
     }
 
     //Get the helper id
