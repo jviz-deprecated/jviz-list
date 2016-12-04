@@ -98,7 +98,7 @@ jviz.modules.editableList = function(opt)
   this._btn.delete = {};
   this._btn.delete.text = 'Delete'; //Delete button title
   this._btn.delete.id = this._btn.id + '-delete-{index}'; //Delete button id
-  this._btn.delete.class = this._btn.class + '-delete'; //Delete button class
+  this._btn.delete.class = this._btn.class + '--delete'; //Delete button class
 
   //Save button
   this._btn.save = {};
