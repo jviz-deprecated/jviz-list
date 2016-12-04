@@ -124,15 +124,6 @@ jviz.modules.editableList.prototype.row = function(index, edit)
   //Check the edit mode
   if(edit === true)
   {
-    //Get the save button id
-    var btn_save_id = this._btn.save.id.replace('{index}', index);
-
-    //Get the save button class
-    var btn_save_class = this._btn.class + ' ' + this._btn.save.class;
-
-    //Add the save button
-    jviz.dom.append(btn_id, { id: btn_save_id, class: btn_save_class, title: this._btn.save.text });
-
     //Get the cancel button id
     var btn_cancel_id = this._btn.cancel.id.replace('{index}', index);
 
@@ -141,18 +132,18 @@ jviz.modules.editableList.prototype.row = function(index, edit)
 
     //Add the save button
     jviz.dom.append(btn_id, { id: btn_cancel_id, class: btn_cancel_class, title: this._btn.cancel.text });
+    
+    //Get the save button id
+    var btn_save_id = this._btn.save.id.replace('{index}', index);
+
+    //Get the save button class
+    var btn_save_class = this._btn.class + ' ' + this._btn.save.class;
+
+    //Add the save button
+    jviz.dom.append(btn_id, { id: btn_save_id, class: btn_save_class, title: this._btn.save.text });
   }
   else
   {
-    //Get the edit button id
-    var btn_edit_id = this._btn.edit.id.replace('{index}', index);
-
-    //Get the cancel button class
-    var btn_edit_class = this._btn.class + ' ' + this._btn.edit.class;
-
-    //Add the save button
-    jviz.dom.append(btn_id, { id: btn_edit_id, class: btn_edit_class, title: this._btn.edit.text });
-
     //Get the delete button id
     var btn_delete_id = this._btn.delete.id.replace('{index}', index);
 
@@ -161,6 +152,15 @@ jviz.modules.editableList.prototype.row = function(index, edit)
 
     //Add the save button
     jviz.dom.append(btn_id, { id: btn_delete_id, class: btn_delete_class, title: this._btn.delete.text });
+
+    //Get the edit button id
+    var btn_edit_id = this._btn.edit.id.replace('{index}', index);
+
+    //Get the cancel button class
+    var btn_edit_class = this._btn.class + ' ' + this._btn.edit.class;
+
+    //Add the save button
+    jviz.dom.append(btn_id, { id: btn_edit_id, class: btn_edit_class, title: this._btn.edit.text });
   }
 
   //Add the button events
