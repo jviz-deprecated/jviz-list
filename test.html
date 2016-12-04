@@ -23,15 +23,15 @@
     //Columns
     opt.columns =
     [
-      { key: 'key1', detail: 'Random integer', helper: 'Integer', type: 'number' },
-      { key: 'key2', detail: 'Randon string', helper: 'Non-empty string' },
-      { key: 'key3', detail: 'Real index', editable: false }
+      { key: 'key1', helper: 'Random integer', type: 'number' },
+      { key: 'key2', helper: 'Randon string' },
+      { key: 'key3', helper: 'Real index', editable: false }
     ];
 
     //column info
     opt.info =
     {
-      active: true,
+      visible: true,
       title: function(el, index){ return el.title; },
       detail: 'Information about this element'
     };
