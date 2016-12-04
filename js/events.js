@@ -1,33 +1,27 @@
-//Add the button events
-jviz.modules.editableList.prototype.btnEvents = function(index, edit)
+//Add the events
+jviz.modules.editableList.prototype.events = function(index)
 {
-  //Check the edit mode
-  if(typeof edit !== 'boolean'){ var edit = false; }
   //Save this
   var self = this;
 
-  //Check the editable mode
-  if(edit === true)
-  {
-    //Add the save button event
-    $('#' + this._btn.save.id + '-' + index).on('click', function(e){ return self.clickSave(e, index); });
+  //Add the save button event
+  jviz.dom.on(this._btn.save.id.replace('{index}', index), 'click', function(e){ return self.eventSave(e, index); });
 
-    //Add the cancel button event
-    $('#' + this._btn.cancel.id + '-' + index).on('click', function(e){ return self.clickCancel(e, index); });
-
-    //Exit
-    return;
-  }
+  //Add the cancel button event
+  jviz.dom.on(this._btn.cancel.id.replace('{index}', index), 'click', function(e){ return self.eventCancel(e, index); });
 
   //Add the edit button event
-  $('#' + this._btn.edit.id + '-' + index).on('click', function(e){ return self.clickEdit(e, index); });
+  jviz.dom.on(this._btn.edit.id.replace('{index}', index), 'click', function(e){ return self.eventEdit(e, index); });
 
   //Add the delete button event
-  $('#' + this._btn.delete.id + '-' + index).on('click', function(e){ return self.clickDelete(e, index); });
+  jviz.dom.on(this._btn.delete.id.replace('{index}', index), 'click', function(e){ return self.eventDelete(e, index); });
+
+  //Return this
+  return this;
 };
 
 //Click edit button
-jviz.modules.editableList.prototype.clickEdit = function(e, index)
+jviz.modules.editableList.prototype.eventEdit = function(e, index)
 {
   //Call the click event
   var response = this._events.emit('click:edit', this._data.src[index], index);
@@ -40,7 +34,7 @@ jviz.modules.editableList.prototype.clickEdit = function(e, index)
 };
 
 //Click delete button
-jviz.modules.editableList.prototype.clickDelete = function(e, index)
+jviz.modules.editableList.prototype.eventDelete = function(e, index)
 {
   //Call the delete event
   var response = this._events.emit('click:delete', this._data.src[index], index);
@@ -53,7 +47,7 @@ jviz.modules.editableList.prototype.clickDelete = function(e, index)
 };
 
 //Click save button
-jviz.modules.editableList.prototype.clickSave = function(e, index)
+jviz.modules.editableList.prototype.eventSave = function(e, index)
 {
   //Clone the object with the data
   var obj = jviz.object.clone(this._data.src[index]);
@@ -68,7 +62,7 @@ jviz.modules.editableList.prototype.clickSave = function(e, index)
     if(col.editable === false){ continue; }
 
     //Update the value
-    obj[col.key] = $('#' + this._input.id + '-' + index + '-' + i).val();
+    obj[col.key] = jviz.dom.val(this._input.id.replace('{index}', index).replace('{column}', i));
   }
 
   //Call the save event
@@ -82,7 +76,7 @@ jviz.modules.editableList.prototype.clickSave = function(e, index)
 };
 
 //Click cancel button
-jviz.modules.editableList.prototype.clickCancel = function(e, index)
+jviz.modules.editableList.prototype.eventCancel = function(e, index)
 {
   //Call the cancel event
   var response = this._events.emit('click:cancel', index);
