@@ -50,6 +50,9 @@ jviz.modules.editableList.prototype.row = function(index, edit)
     //Get the column
     var col = this._columns.src[i];
 
+    //Get the column value
+    var value = el[col.key];
+
     //Generate the cell id
     var cell_id = this._cell.id.replace('{index}', index).replace('{column}', i);
 
@@ -89,17 +92,17 @@ jviz.modules.editableList.prototype.row = function(index, edit)
         //Add the input
         jviz.dom.append(cell_id, { _tag: 'input', type: col.type, id: input_id, class: this._input.class });
       }
+
+      //Add the value
+      jviz.dom.value(input_id, value);
     }
     else
     {
       //Get the cell value
       var value_id = this._value.id.replace('{index}', index).replace('{column}', i)
 
-      //Get the value text
-      var value_text = el[col.key];
-
       //Add the cell value
-      jviz.dom.append(cell_id, { id: value_id, class: this._value.class, _html: value_text });
+      jviz.dom.append(cell_id, { id: value_id, class: this._value.class, _html: value });
     }
 
     //Get the helper id
@@ -132,7 +135,7 @@ jviz.modules.editableList.prototype.row = function(index, edit)
 
     //Add the save button
     jviz.dom.append(btn_id, { id: btn_cancel_id, class: btn_cancel_class, title: this._btn.cancel.text });
-    
+
     //Get the save button id
     var btn_save_id = this._btn.save.id.replace('{index}', index);
 
