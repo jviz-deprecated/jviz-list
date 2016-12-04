@@ -13,6 +13,9 @@ jviz.modules.editableList.prototype.data = function(list)
   //Save the number of data elements
   this._data.length = this._data.src.length;
 
+  //Reset the active rows
+  this._data.active = [];
+
   //Return this
   return this;
 };
