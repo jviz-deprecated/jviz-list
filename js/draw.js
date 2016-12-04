@@ -4,28 +4,40 @@ jviz.modules.editableList.prototype.draw = function()
   //Reset the container
   jviz.dom.html(this._table.id, '');
 
-  //Display all data
-  for(var i = 0; i < this._data.src.length; i++)
-  {
-    //Get the element
-    var el = this._data.src[i];
+  //Check the data length
+  if(this._data.length === 0){ return this; }
 
-    //Get the id
-    var id = this._row.id + '-' + i;
+  //Update the data active
+  this._data.active = [];
+
+  //Save this
+  var self = this;
+
+  //Read all the data
+  this._data.src.forEach(function(el, index)
+  {
+    //Get the row id
+    var row_id = self._row.id.replace('{index}', index);
 
     //Add the row
-    jviz.dom.append(this._table.id, { id: id, class: this._row.class });
+    jviz.dom.append(self._table.id, { id: row_id, class: self._row.class });
 
-    //Display the new element
-    this.display(el, i, false);
-  }
+    //Display the row
+    self.row(index, false);
 
-  //Add the events
-  for(var i = 0; i < this._data.src.length; i++)
-  {
-    //Add the events
-    this.btnEvents(i, false);
-  }
+    //Continue
+    return true;
+  });
+
+  //Return this
+  return this;
+};
+
+//Clear the list
+jviz.modules.editableList.prototype.clear = function()
+{
+  //Clear the full list
+  jviz.dom.html(this._table.id, '');
 
   //Return this
   return this;
