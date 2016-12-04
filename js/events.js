@@ -1,20 +1,26 @@
 //Add the events
-jviz.modules.editableList.prototype.events = function(index)
+jviz.modules.editableList.prototype.events = function(index, edit)
 {
   //Save this
   var self = this;
 
-  //Add the save button event
-  jviz.dom.on(this._btn.save.id.replace('{index}', index), 'click', function(e){ return self.eventSave(e, index); });
+  //Check if edit is active
+  if(edit === true)
+  {
+    //Add the save button event
+    jviz.dom.on(this._btn.save.id.replace('{index}', index), 'click', function(e){ return self.eventSave(e, index); });
 
-  //Add the cancel button event
-  jviz.dom.on(this._btn.cancel.id.replace('{index}', index), 'click', function(e){ return self.eventCancel(e, index); });
+    //Add the cancel button event
+    jviz.dom.on(this._btn.cancel.id.replace('{index}', index), 'click', function(e){ return self.eventCancel(e, index); });
+  }
+  else
+  {
+    //Add the edit button event
+    jviz.dom.on(this._btn.edit.id.replace('{index}', index), 'click', function(e){ return self.eventEdit(e, index); });
 
-  //Add the edit button event
-  jviz.dom.on(this._btn.edit.id.replace('{index}', index), 'click', function(e){ return self.eventEdit(e, index); });
-
-  //Add the delete button event
-  jviz.dom.on(this._btn.delete.id.replace('{index}', index), 'click', function(e){ return self.eventDelete(e, index); });
+    //Add the delete button event
+    jviz.dom.on(this._btn.delete.id.replace('{index}', index), 'click', function(e){ return self.eventDelete(e, index); });
+  }
 
   //Return this
   return this;
