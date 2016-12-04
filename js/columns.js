@@ -2,46 +2,48 @@
 jviz.modules.editableList.prototype.columns = function(list)
 {
   //Check for undefined columns
-  if(typeof list === 'undefined'){ var list = this._columns.src; }
+  if(typeof list === 'undefined'){ return this._columns.src; }
 
   //Check for array
   if(jviz.is.array(list) === false){ list = [ list ]; }
 
+  //Reset the columns list
+  this._columns.src = [];
+
   //Parse all the columns
-  list.map(function(el, index)
+  for(var i = 0; i < list.length; i++)
   {
-    //Check the key
-    if(typeof el.key === 'undefined'){ throw new Error('No key on column ' + index); }
+    //Get the element
+    var el = list[i];
 
-    //Inpiut type
-    if(typeof el.type === 'undefined'){ el.type = 'text'; }
+    //Check the column key
+    if(typeof el.key !== 'string'){ continue; }
 
-    //Options
-    if(typeof el.options === 'undefined'){ el.options = []; }
+    //Check the element type
+    el.type = (typeof el.tyle === 'string') ? el.type : 'text';
 
-    //Check for editable
-    if(typeof el.editable === 'undefined'){ el.editable = true; }
+    //Check for editable column
+    el.editable = (typeof el.editable === 'boolean') ? el.editable : true;
 
-    //Check the detail function/string
-    if(typeof el.detail === 'undefined'){ el.detail = ''; }
+    //Check the detail function or string
+    el.detail = (typeof el.detail !== 'undefined') ? el.detail : '';
 
-    //Check the column input helper
-    if(typeof el.helper === 'undefined'){ el.helper = ''; }
+    //Checl the helper function or string
+    el.helper = (typeof el.helper !== 'undefined') ? el.helper : '';
 
-    //Return the element
-    return el;
-  });
+    //Check the options
+    el.options = (typeof el.options !== 'undefined') ? el.options : [];
 
-  //Save the columns
-  this._columns.src = list;
-};
+    //Check for visible column
+    el.visible = (typeof el.visible === 'boolean') ? el.visible : true;
 
-//Get the columns
-jviz.modules.editableList.prototype.getColumns = function(index)
-{
-  //Check the index
-  if(typeof index === 'undefined'){ return this._columns.src; }
+    //Save the column
+    this._columns.src.push(el);
+  }
 
-  //Return the column
-  return this._columns.src[index];
+  //Save the number of columns
+  this._columns.length = this._columns.src.length;
+
+  //Return this
+  return this;
 };
