@@ -21,30 +21,23 @@ jviz.modules.editableList = function(opt)
 
   //Data
   this._data = {};
-  this._data.ajax = (typeof opt.ajax === 'undefined') ? {} : opt.ajax;
-  this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data;
+  this._data.src = (typeof opt.data === 'undefined') ? [] : opt.data; //Data source
+  this._data.length = 0; //Data length
   this._data.active = []; //Active rows
 
   //Columns list
   this._columns = {};
   this._columns.src = (typeof opt.columns === 'undefined') ? [] : opt.columns; //Columns source
-  this._columns.info = {}; //Column info
-  this._columns.info.active = false; //Column info is active
-  this._columns.info.title = ''; //Column info title
-  this._columns.info.detail = ''; //Column info detail
+  this._columns.length = 0; //Number of columns
 
-  //Check if is enabled
-  if(typeof opt.columnInfo !== 'undefined')
-  {
-    //Save active
-    if(typeof opt.columnInfo.active === 'boolean'){ this._columns.info.active = opt.columnInfo.active; }
+  //Check the info
+  if(typeof opt.info !== 'object'){ opt.info = {}; }
 
-    //Save the column info title
-    if(typeof opt.columnInfo.title !== 'undefined'){ this._columns.info.title = opt.columnInfo.title; }
-
-    //Save the column info description
-    if(typeof opt.columnInfo.detail !== 'undefined'){ this._columns.info.detail = opt.columnInfo.detail; }
-  }
+  //Data info
+  this._info = {}; //Column info
+  this._info.visible = (typeof opt.info.visible === 'boolean') ? opt.info.visible : false; //Element info is visible
+  this._info.title = (typeof opt.info.title !== 'undefined') ? opt.info.title : ''; //Element info title
+  this._info.detail = (typeof opt.info.detail !== 'undefined') ? opt.info.detail : ''; //Element info detail
 
   //Table object
   this._table = {};
@@ -53,53 +46,86 @@ jviz.modules.editableList = function(opt)
 
   //Row
   this._row = {};
-  this._row.id = this._id + '-row'; //Row ID
+  this._row.id = this._id + '-row-{index}'; //Row ID
   this._row.class = this._class + '-row'; //Row class
 
   //Cell
   this._cell = {};
-  this._cell.id = this._id + '-cell'; //Cell ID
+  this._cell.id = this._id + '-cell-{index}-{column}'; //Cell ID template
   this._cell.class = this._class + '-cell'; //Cell class
-  this._cell.last = this._cell.class + '-last'; //Last cell class
 
   //Input
   this._input = {};
-  this._input.id = this._id + '-input'; //Input ID
+  this._input.id = this._id + '-input-{index}-{column}'; //Input ID
   this._input.class = this._class + '-input'; //Input class
-  this._input.helper = this._input.class + '-helper'; //Input helper class
 
-  //Text type
-  this._text = {};
-  this._text.title = this._class + '-title'; //Title text class
-  this._text.value = this._class + '-value'; //Value text class
-  this._text.detail = this._class + '-detail'; //Detail text class
+  //Input option
+  this._input.option = {};
+  this._input.option.id = this._input.id + '-{option}'; //Option ID template
+
+  //Helper
+  this._helper = {};
+  this._helper.id = this._id + '-helper-{index}-{column}'; //Helper ID template
+  this._helper.class = this._class + '-helper'; //Helper class
+
+  //Value
+  this._value = {};
+  this._value.id = this._id + '-value-{index}-{column}'; //Value ID template
+  this._value.class = this._class + '-value'; //Value class
+
+  //Title
+  this._title = {};
+  this._title.id = this._id + '-title-{index}'; //Title ID template
+  this._title.class = this._class + '-title'; //Title class
+
+  //Detail
+  this._detail = {};
+  this._detail.id = this._id + '-detail-{index}'; //Detail ID template
+  this._detail.class = this._class + '-detail'; //Detail class
 
   //Button
   this._btn = {};
   this._btn.id = this._id + '-btn'; //Button ID
   this._btn.class = this._class + '-btn'; //Button class
+
+  //Edit button
   this._btn.edit = {}; //Edit button
-  this._btn.edit.alt = 'Edit'; //Edit button title
-  this._btn.edit.id = this._btn.id + '-edit'; //Edit button id
-  this._btn.edit.class = this._btn.class + '-edit'; //Edit button class
+  this._btn.edit.text = 'Edit'; //Edit button title
+  this._btn.edit.id = this._btn.id + '-edit-{index}'; //Edit button id
+  this._btn.edit.class = this._btn.class + '--edit'; //Edit button class
+
+  //Delete button
   this._btn.delete = {};
-  this._btn.delete.alt = 'Delete'; //Delete button title
-  this._btn.delete.id = this._btn.id + '-delete'; //Delete button id
+  this._btn.delete.text = 'Delete'; //Delete button title
+  this._btn.delete.id = this._btn.id + '-delete-{index}'; //Delete button id
   this._btn.delete.class = this._btn.class + '-delete'; //Delete button class
+
+  //Save button
   this._btn.save = {};
-  this._btn.save.alt = 'Save'; //Save button title
-  this._btn.save.id = this._btn.id + '-save'; //Save button id
-  this._btn.save.class = this._btn.class + '-save'; //Save button class
+  this._btn.save.text = 'Save'; //Save button title
+  this._btn.save.id = this._btn.id + '-save-{index}'; //Save button id
+  this._btn.save.class = this._btn.class + '--save'; //Save button class
+
+  //Cancel button
   this._btn.cancel = {};
-  this._btn.cancel.alt = 'Cancel'; //Cancel button title
-  this._btn.cancel.id = this._btn.id + '-cancel'; //Cancel button id
-  this._btn.cancel.class = this._btn.class + '-cancel'; //Cancel button class
+  this._btn.cancel.text = 'Cancel'; //Cancel button title
+  this._btn.cancel.id = this._btn.id + '-cancel-{index}'; //Cancel button id
+  this._btn.cancel.class = this._btn.class + '--cancel'; //Cancel button class
 
   //Events object
   this._events = new jviz.commons.events();
 
   //Build the editable list
   this.build();
+
+  //Parse the columns
+  this.columns(this._columns.src);
+
+  //Parse the data
+  this.data(this._data.src);
+
+  //Display the data
+  this.draw();
 
   //Return this
   return this;
