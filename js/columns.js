@@ -25,10 +25,7 @@ jviz.modules.editableList.prototype.columns = function(list)
     //Check for editable column
     el.editable = (typeof el.editable === 'boolean') ? el.editable : true;
 
-    //Check the detail function or string
-    el.detail = (typeof el.detail !== 'undefined') ? el.detail : '';
-
-    //Checl the helper function or string
+    //Check the helper function or string
     el.helper = (typeof el.helper !== 'undefined') ? el.helper : '';
 
     //Check the options
@@ -36,6 +33,9 @@ jviz.modules.editableList.prototype.columns = function(list)
 
     //Check for visible column
     el.visible = (typeof el.visible === 'boolean') ? el.visible : true;
+
+    //Check the column parse function
+    //el.parse = (typeof el.parse === 'function') ? el.parse : function(e,x,k){ return e[k]; };
 
     //Save the column
     this._columns.src.push(el);
