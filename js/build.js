@@ -7,15 +7,6 @@ jviz.modules.editableList.prototype.build = function()
   //Build the table
   jviz.dom.append(this._id, { id: this._table.id, class: this._table.class });
 
-  //Parse the columns
-  this.columns();
-
-  //Get the data
-  if(typeof this._data.ajax.url === 'string'){ return this.ajax(this._data.ajax); }
-
-  //Parse the data
-  this.data();
-
-  //Display the data
-  return this.draw();
+  //Return this
+  return this;
 };
