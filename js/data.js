@@ -1,21 +1,24 @@
 //Display the provided data
-jviz.modules.editableList.prototype.data = function(data)
+jviz.modules.editableList.prototype.data = function(list)
 {
-  //Check for undefined data
-  if(typeof data === 'undefined'){ var data = this._data.src; }
+  //Check for undefined list
+  if(typeof list === 'undefined'){ return this._data.src; }
 
   //Check the data
-  if(jviz.is.array(data) === false){ data = [ data ]; }
+  if(jviz.is.array(list) === false){ list = [ list ]; }
 
-  //Save the data
-  this._data.src = data;
+  //Save the data list
+  this._data.src = list;
+
+  //Save the number of data elements
+  this._data.length = this._data.src.length;
 
   //Return this
   return this;
 };
 
-//Get the actual data
-jviz.modules.editableList.prototype.getData = function(index)
+//Get an element
+jviz.modules.editableList.prototype.element = function(index)
 {
   //Check the index
   if(typeof index === 'undefined'){ return this._data.src; }
