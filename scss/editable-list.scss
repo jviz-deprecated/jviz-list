@@ -91,15 +91,28 @@
   //Input
   &-input { @include jviz-input-fluid($jviz-white); display: block; }
 
+  //Common styles
+  &-helper, &-title, &-value, &-detail
+  {
+    //Display
+    display: block;
+
+    //Cut long text
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+
+    //Default font
+    @include jviz-font;
+  }
+
   //Helper
-  &-helper { @include jviz-font; font-size: 12px; display: block; margin-top: 5px; }
+  &-helper { font-size: 12px; margin-top: 5px; }
 
   //Title text
-  &-title { display: block; line-height: 20px; @include jviz-font; font-weight: bold; font-size: 16px; }
+  &-title { line-height: 20px; font-weight: bold; font-size: 16px; }
 
   //Value text
-  &-value { display: block; line-height: 20px; @include jviz-font; font-size: 16px; }
+  &-value { line-height: 20px; font-size: 16px; }
 
   //Detail
-  &-detail { display: block; line-height: 15px; @include jviz-font; font-size: 12px; margin: { top: 2px; } }
+  &-detail { line-height: 15px; font-size: 12px; margin: { top: 2px; } }
 }
