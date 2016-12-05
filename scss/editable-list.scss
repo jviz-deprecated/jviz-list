@@ -16,16 +16,15 @@
     //Style
     display: table; width: 100%; overflow-x: hidden;
 
+    //Table layout
+    table-layout:fixed;
+
     //Border
     border: { collapse: separate; width: 0px; spacing: 0px 10px; }
   }
 
   //Row
-  &-row
-  {
-    //Style
-    display: table-row;
-  }
+  &-row { display: table-row; width: 100% !important; }
 
   //Cell
   &-cell
