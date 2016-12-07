@@ -88,7 +88,7 @@
   }
 
   //Input
-  &-input { @include jviz-input-fluid($jviz-white); display: block; }
+  &-input { @include jviz-input($jviz-white); @include jviz-input-fluid; display: block; }
 
   //Common styles
   &-helper, &-title, &-value, &-detail
