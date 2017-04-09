@@ -1,0 +1,32 @@
+<!--
+@license
+Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
+The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
+-->
+
+<!-- Import list element -->
+<link rel="import" href="../jviz-list.html">
+
+<!-- List element -->
+<jviz-list id="test"></jviz-list>
+
+<!-- Test script -->
+<script>
+  var el = null;
+
+  //Dom ready
+  jviz.dom.ready(function()
+  {
+    //Initialize the list element
+    el = jviz.dom.id('test');
+
+    //Add the data
+    el.data =
+    [
+      { title: 'Element 0', detail: 'This is the element 0 of the list' },
+      { title: 'Element 1', detail: 'This is the element 1 of the list' },
+      { title: 'Element 2', detail: 'This is the element 2 of the list' },
+      { title: 'Element 3', detail: 'This is the element 3 of the list' }
+    ];
+  });
+</script>
