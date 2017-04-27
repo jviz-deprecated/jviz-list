@@ -138,32 +138,51 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
   };
 
-  //Display the title
-  jviz_list._show_title = function(item)
-  {
-    //Check if item exists
-    return (typeof item === 'string') ? item : 'Undefined';
-  };
-
   //Tap on item
-  jviz_list._tap_item = function(e)
+  jviz_list._on_tap = function(e)
   {
-    //Get the index
-    var index = this._index(e.path)
-  };
+    //Save the button id
+    var btn_id = null;
 
-  //Delete an element
-  jviz_list._tap_delete = function(e)
-  {
-    //Get the list index
-    var index = this._index(e.path);
+    //Read all the paths
+    for(var i = 0; o < e.path.length; i++)
+    {
+      //Get the element
+      var el = e.path[i];
 
-    //Check for not found
-    if(index < 0){ return; }
+      //Check the tag name
+      if(el.tagName.toLowerCase() === 'jviz-btn')
+      {
+        //Save the button id
+        btn_id = el.id;
+      }
+      else if(el.tagName.toLowerCase() === 'div' && jviz.dom.class.has(el, 'item') === true)
+      {
+        //Check for undefined item index
+        if(typeof el.dataset.index === 'undefined'){ return; }
 
-    //Display in console
-    console.log('Delete element ' + index);
+        //Get the element index
+        var item_index = parseInt(el.dataset.index);
 
+        //Get the item information
+        var item_data = this.data[item_index];
+
+        //Build the item object
+        var item_obj = { item: item_data, index: item_index };
+
+        //Check for button id
+        if(btn_id)
+        {
+          //Emit the button tap event
+          return this.fire('click:btn:' + btn_id, item_obj);
+        }
+        else
+        {
+          //Fire the click event
+          return this.fire('click:item', item_obj);
+        }
+      }
+    }
   };
 
   //Find the index
