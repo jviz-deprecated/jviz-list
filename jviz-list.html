@@ -132,12 +132,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     this.buttons = list;
   };
 
-  //Delete an element
-  jviz_list.delete = function(index)
-  {
-
-  };
-
   //Tap on item
   jviz_list._on_tap = function(e)
   {
@@ -183,24 +177,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         }
       }
     }
-  };
-
-  //Find the index
-  jviz_list._index = function(paths)
-  {
-    //Read the paths
-    for(var i = 0; i < paths.length; i++)
-    {
-      //Check the index
-      if(paths[i].dataset.index !== 'undefined')
-      {
-        //Return the index
-        return parseInt(paths[i].dataset.index);
-      }
-    }
-
-    //Return not found
-    return -1;
   };
 
   //Register the list element
