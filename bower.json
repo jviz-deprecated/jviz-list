@@ -5,9 +5,9 @@
   "dependencies":
   {
     "polymer": "Polymer/polymer#^1.4.0",
-    "jviz": "https://github.com/jviz/jviz.git#dev",
-    "jviz-styles": "https://github.com/jviz/jviz-styles.git#dev",
-    "jviz-form": "jviz/jviz-form#dev"
+    "jviz": "jviz/jviz#dev",
+    "jviz-styles": "jviz/jviz-styles#dev",
+    "jviz-btn": "jviz/jviz-btn#dev"
   },
   "license": "MIT",
   "authors": [ "Josemi Juanes <josemijuanes@gmail.com>" ],
