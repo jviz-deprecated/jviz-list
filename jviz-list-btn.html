@@ -1,0 +1,27 @@
+<!--
+@license
+Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
+The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
+-->
+
+<!-- Import dependencies -->
+<link rel="import" href="../polymer/polymer.html">
+
+<!-- List button -->
+<dom-module id="jviz-list-btn">
+  <template></template>
+</dom-module>
+
+<!-- List button logic -->
+<script>
+  //Initialize the button object
+  var jviz_list_btn = { is: 'jviz-list-btn' };
+
+  //Button properties
+  jviz_list_btn.properties = {};
+  jviz_list_btn.properties.text = { type: String, reflectToAttribute: true };
+  jviz_list_btn.properties.icon = { type: String, reflectToAttribute: true };
+
+  //Register the element
+  Polymer(jviz_list_btn);
+</script>
