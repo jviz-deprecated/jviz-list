@@ -38,22 +38,27 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         background-color: var(--jviz-grey-2);
         margin-bottom: 10px;
         position:relative;
-        vertical-align: middle;
         cursor: pointer;
+        white-space: nowrap;
+      }
+      :host .item:before
+      {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
       }
 
       /* List item content */
       :host .item .content
       {
-        width: calc(100% - 40px);
         display: inline-block;
-        float: left;
+        vertical-align: middle;
       }
 
       /* List item content title */
       :host .item .content .title
       {
-        display: block;
         line-height: 20px;
         @apply --jviz-font;
         font-size: 15px;
@@ -63,7 +68,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       /* List item content detail */
       :host .item .content .detail
       {
-        display: block;
         cursor: pointer;
         line-height: 20px;
         @apply --jviz-font;
@@ -77,14 +81,16 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         display: block;
         float: right;
         position:relative;
+        height: 40px;
+        line-height: 40px;
       }
     </style>
     <div id="buttons">
       <content select="template"></content>
     </div>
     <template is="dom-repeat" items="{{ data }}" index-as="index">
-      <div class="item" data-index$="{{ index }}">
-        <div class="content" data-index$="{{ index }}" on-tap="_tap_item">
+      <div class="item" data-index$="{{ index }}" on-tap="_on_tap">
+        <div class="content" data-index$="{{ index }}">
           <template is="dom-if" if="{{ item.title }}">
             <div class="title">{{ item.title }}</div>
           </template>
@@ -93,8 +99,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
           </template>
         </div>
         <div class="actions">
+          Actions
           <template is="dom-repeat" items="{{ buttons }}">
-            <jviz-btn data-index$="{{ index }}" icon="" color="navy" on-tap="_tap_delete"></jviz-btnn>
+            <jviz-btn data-index$="{{ index }}" icon="" color="navy"></jviz-btnn>
           </template>
         </div>
       </div>
@@ -111,6 +118,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_list.properties = {};
   jviz_list.properties.data = { type: Array, value: [] };
   jviz_list.properties.buttons = { type: Array, value: [] };
+  jviz_list.properties.keyTitle = { type: String };
 
   //List attached
   jviz_list.attached = function()
@@ -122,6 +130,13 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_list.delete = function(index)
   {
 
+  };
+
+  //Display the title
+  jviz_list._show_title = function(item)
+  {
+    //Check if item exists
+    return (typeof item === 'string') ? item : 'Undefined';
   };
 
   //Tap on item
