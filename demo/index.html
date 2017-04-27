@@ -4,11 +4,19 @@ Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
 The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
 -->
 
+<!-- Test style -->
+<style>
+  body{ padding: 20px !important; }
+</style>
+
 <!-- Import list element -->
 <link rel="import" href="../jviz-list.html">
 
 <!-- List element -->
-<jviz-list id="test"></jviz-list>
+<jviz-list id="test" btn-edit btn-delete>
+  <jviz-list-btn text="Edit"></jviz-list-btn>
+  <jviz-list-btn icon="settings"></jviz-list-btn>
+</jviz-list>
 
 <!-- Test script -->
 <script>
@@ -25,8 +33,8 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     [
       { title: 'Element 0', detail: 'This is the element 0 of the list' },
       { title: 'Element 1', detail: 'This is the element 1 of the list' },
-      { title: 'Element 2', detail: 'This is the element 2 of the list' },
-      { title: 'Element 3', detail: 'This is the element 3 of the list' }
+      { title: 'Element 2', detail2: 'This is the element 2 of the list' },
+      { title2: 'Element 3', detail: 'This is the element 3 of the list' }
     ];
   });
 </script>
