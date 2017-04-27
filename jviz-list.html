@@ -17,7 +17,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 <dom-module id="jviz-list">
   <template>
     <style>
-      /* Host style */
       :host
       {
         display: block;
@@ -25,8 +24,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         margin-top: 0px;
         margin-bottom: 10px;
       }
-
-      /* List item */
       :host .item
       {
         display: block;
@@ -48,15 +45,11 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         height: 100%;
         vertical-align: middle;
       }
-
-      /* List item content */
       :host .item .content
       {
         display: inline-block;
         vertical-align: middle;
       }
-
-      /* List item content title */
       :host .item .content .title
       {
         line-height: 20px;
@@ -64,8 +57,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         font-size: 15px;
         font-weight: bold;
       }
-
-      /* List item content detail */
       :host .item .content .detail
       {
         cursor: pointer;
@@ -74,8 +65,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         font-size: 13px;
         color: var(--jviz-navy-4);
       }
-
-      /* List item actions */
       :host .item .actions
       {
         display: block;
@@ -84,9 +73,13 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         height: 40px;
         line-height: 40px;
       }
+      :host .item .actions .btn
+      {
+        font-size: 11px !important;
+      }
     </style>
     <div id="buttons">
-      <content select="template"></content>
+      <content select="jviz-list-btn"></content>
     </div>
     <template is="dom-repeat" items="{{ data }}" index-as="index">
       <div class="item" data-index$="{{ index }}" on-tap="_on_tap">
@@ -99,9 +92,8 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
           </template>
         </div>
         <div class="actions">
-          Actions
-          <template is="dom-repeat" items="{{ buttons }}">
-            <jviz-btn data-index$="{{ index }}" icon="" color="navy"></jviz-btnn>
+          <template is="dom-repeat" items="{{ buttons }}" as="btn">
+            <jviz-btn class="btn" text$="{{ btn.text }}" icon$="{{ btn.icon }}" color="navy" size="20px"></jviz-btnn>
           </template>
         </div>
       </div>
