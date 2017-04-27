@@ -14,7 +14,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
 <!-- List element -->
 <jviz-list id="test" btn-edit btn-delete>
-  <jviz-list-btn text="Edit"></jviz-list-btn>
+  <jviz-list-btn id="edit" text="Edit"></jviz-list-btn>
   <jviz-list-btn icon="settings"></jviz-list-btn>
 </jviz-list>
 
@@ -36,5 +36,14 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       { title: 'Element 2', detail2: 'This is the element 2 of the list' },
       { title2: 'Element 3', detail: 'This is the element 3 of the list' }
     ];
+
+    //Add the button delete click event listener
+    el.addEventListener('click:btn:delete', function(e){ console.log('DELETE'); console.log(e.detail.index); });
+
+    //Add the button edit click event listener
+    el.addEventListener('click:btn:edit', function(e){ console.log('EDIT'); console.log(e.detail.index); });
+
+    //Add the item click event listener
+    el.addEventListener('click:item', function(e){ console.log('ITEM'); console.log(e.detail.index); });
   });
 </script>
