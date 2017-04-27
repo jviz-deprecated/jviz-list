@@ -8,22 +8,160 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../jviz/jviz.html">
 <link rel="import" href="../jviz-styles/jviz-styles.html">
+<link rel="import" href="../jviz-btn/jviz-btn.html">
+
+<!-- Import list element -->
+<link rel="import" href="./jviz-list-btn.html">
 
 <!-- List element -->
 <dom-module id="jviz-list">
-  <style>
-    /* Host variables */
-    :host
-    {
+  <template>
+    <style>
+      /* Host style */
+      :host
+      {
+        display: block;
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
 
-    }
-  </style>
+      /* List item */
+      :host .item
+      {
+        display: block;
+        width: calc(100% - 20px);
+        height: 40px;
+        padding: 10px;
+        overflow-x: hidden;
+        border-radius: 5px;
+        background-color: var(--jviz-grey-2);
+        margin-bottom: 10px;
+        position:relative;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      /* List item content */
+      :host .item .content
+      {
+        width: calc(100% - 40px);
+        display: inline-block;
+        float: left;
+      }
+
+      /* List item content title */
+      :host .item .content .title
+      {
+        display: block;
+        line-height: 20px;
+        @apply --jviz-font;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      /* List item content detail */
+      :host .item .content .detail
+      {
+        display: block;
+        cursor: pointer;
+        line-height: 20px;
+        @apply --jviz-font;
+        font-size: 13px;
+        color: var(--jviz-navy-4);
+      }
+
+      /* List item actions */
+      :host .item .actions
+      {
+        display: block;
+        float: right;
+        position:relative;
+      }
+    </style>
+    <div id="buttons">
+      <content select="template"></content>
+    </div>
+    <template is="dom-repeat" items="{{ data }}" index-as="index">
+      <div class="item" data-index$="{{ index }}">
+        <div class="content" data-index$="{{ index }}" on-tap="_tap_item">
+          <template is="dom-if" if="{{ item.title }}">
+            <div class="title">{{ item.title }}</div>
+          </template>
+          <template is="dom-if" if="{{ item.detail }}">
+            <div class="detail">{{ item.detail }}</div>
+          </template>
+        </div>
+        <div class="actions">
+          <template is="dom-repeat" items="{{ buttons }}">
+            <jviz-btn data-index$="{{ index }}" icon="" color="navy" on-tap="_tap_delete"></jviz-btnn>
+          </template>
+        </div>
+      </div>
+    </template>
+  </template>
 </dom-module>
 
 <!-- List logic -->
 <script>
   //Initialize the jviz list object
   var jviz_list = { is: 'jviz-list' };
+
+  //List properties
+  jviz_list.properties = {};
+  jviz_list.properties.data = { type: Array, observer: '_update_data', value: [] };
+  jviz_list.properties.buttons = { type: Array, value: [] };
+
+  //List attached
+  jviz_list.attached = function()
+  {
+    //Get the buttons div
+  };
+
+  //Delete an element
+  jviz_list.delete = function(index)
+  {
+
+  };
+
+  //Tap on item
+  jviz_list._tap_item = function(e)
+  {
+    //Get the index
+    var index = this._index(e.path)
+  };
+
+  //Delete an element
+  jviz_list._tap_delete = function(e)
+  {
+    //Get the list index
+    var index = this._index(e.path);
+
+    //Check for not found
+    if(index < 0){ return; }
+
+    //Display in console
+    console.log('Delete element ' + index);
+
+  };
+
+  //Find the index
+  jviz_list._index = function(paths)
+  {
+    //Read the paths
+    for(var i = 0; i < paths.length; i++)
+    {
+      //Check the index
+      if(paths[i].dataset.index !== 'undefined')
+      {
+        //Return the index
+        return parseInt(paths[i].dataset.index);
+      }
+    }
+
+    //Return not found
+    return -1;
+  };
 
   //Register the list element
   Polymer(jviz_list);
