@@ -70,12 +70,12 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         display: block;
         float: right;
         position:relative;
-        height: 40px;
-        line-height: 40px;
+        height: 24px;
+        margin-top: 8px;
       }
       :host .item .actions .btn
       {
-        font-size: 11px !important;
+        font-size: 12px !important;
       }
     </style>
     <div id="buttons">
@@ -93,7 +93,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         </div>
         <div class="actions">
           <template is="dom-repeat" items="{{ buttons }}" as="btn">
-            <jviz-btn class="btn" text$="{{ btn.text }}" icon$="{{ btn.icon }}" color="navy" size="20px"></jviz-btnn>
+            <jviz-btn class="btn" text$="{{ btn.text }}" icon$="{{ btn.icon }}" color="navy" height="24px"></jviz-btnn>
           </template>
         </div>
       </div>
@@ -115,7 +115,21 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   //List attached
   jviz_list.attached = function()
   {
-    //Get the buttons div
+    //Initialize the buttons list
+    var list = [];
+
+    //Get all the elements inside the buttons div
+    var elements = this.$.buttons.querySelectorAll('jviz-list-btn');
+
+    //Iterate over all the elements
+    for(var i = 0; i < elements.length; i++)
+    {
+      //Add the button information
+      list.push({ text: elements[i].text, icon: elements[i].icon });
+    }
+
+    //Save the new buttons list
+    this.buttons = list;
   };
 
   //Delete an element
