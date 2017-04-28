@@ -87,9 +87,17 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         background-color: var(--jviz-grey-2);
         margin-bottom: 10px;
         white-space: nowrap;
+        text-align: center;
+      }
+      :host .empty .title
+      {
         font-size: 15px;
         font-weight: bold;
-        text-align: center;
+      }
+      :host .empty .detail
+      {
+        font-size: 13px;
+        color: var(--jviz-navy-4);
       }
     </style>
     <div id="buttons">
@@ -113,7 +121,14 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       </div>
     </template>
     <template is="dom-if" if="{{ has_data }}">
-      <div class="empty">{{ emptyText }}</div>
+      <div class="empty">
+        <template is="dom-if" if="{{ emptyTitle }}">
+          <div class="title">{{ emptyTitle }}</div>
+        </template>
+        <template is="dom-if" if="{{ emptyDetail }}">
+          <div class="detail">{{ emptyDetail }}</div>
+        </template>
+      </div>
     </template>
   </template>
 </dom-module>
@@ -128,7 +143,8 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_list.properties.data = { type: Array, value: [], observer: '_update_data' };
   jviz_list.properties.has_data = { type: Boolean, value: false };
   jviz_list.properties.buttons = { type: Array, value: [] };
-  jviz_list.properties.emptyText = { type: String, reflectToAttribute: true, value: 'This list is empty' };
+  jviz_list.properties.emptyTitle = { type: String, reflectToAttribute: true, value: 'This list is empty' };
+  jviz_list.properties.emptyDetail = { type: String, reflectToAttribute: true };
 
   //List attached
   jviz_list.attached = function()
