@@ -120,7 +120,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         </div>
       </div>
     </template>
-    <template is="dom-if" if="{{ has_data }}">
+    <template is="dom-if" if="{{ !has_data }}">
       <div class="empty">
         <template is="dom-if" if="{{ emptyTitle }}">
           <div class="title">{{ emptyTitle }}</div>
