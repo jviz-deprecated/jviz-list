@@ -23,6 +23,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         width: 100%;
         margin-top: 0px;
         margin-bottom: 10px;
+        @apply --jviz-font;
       }
       :host .item
       {
@@ -53,7 +54,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       :host .item .content .title
       {
         line-height: 20px;
-        @apply --jviz-font;
         font-size: 15px;
         font-weight: bold;
       }
@@ -61,7 +61,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       {
         cursor: pointer;
         line-height: 20px;
-        @apply --jviz-font;
         font-size: 13px;
         color: var(--jviz-navy-4);
       }
@@ -76,6 +75,21 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       :host .item .actions .btn
       {
         font-size: 12px !important;
+      }
+      :host .empty
+      {
+        display: block;
+        width: calc(100% - 20px);
+        line-height: 20px;
+        padding: 10px;
+        overflow-x: hidden;
+        border-radius: 5px;
+        background-color: var(--jviz-grey-2);
+        margin-bottom: 10px;
+        white-space: nowrap;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
       }
     </style>
     <div id="buttons">
@@ -98,6 +112,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         </div>
       </div>
     </template>
+    <template is="dom-if" if="{{ has_data }}">
+      <div class="empty">{{ emptyText }}</div>
+    </template>
   </template>
 </dom-module>
 
@@ -108,9 +125,10 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
   //List properties
   jviz_list.properties = {};
-  jviz_list.properties.data = { type: Array, value: [] };
+  jviz_list.properties.data = { type: Array, value: [], observer: '_update_data' };
+  jviz_list.properties.has_data = { type: Boolean, value: false };
   jviz_list.properties.buttons = { type: Array, value: [] };
-  jviz_list.properties.keyTitle = { type: String };
+  jviz_list.properties.emptyText = { type: String, reflectToAttribute: true, value: 'This list is empty' };
 
   //List attached
   jviz_list.attached = function()
@@ -130,6 +148,13 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
     //Save the new buttons list
     this.buttons = list;
+  };
+
+  //Add new data
+  jviz_list._update_data = function(value)
+  {
+    //Set if has data
+    this.has_data = value.length !== 0;
   };
 
   //Tap on item
