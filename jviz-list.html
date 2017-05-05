@@ -146,8 +146,22 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_list.properties.emptyTitle = { type: String, reflectToAttribute: true, value: 'This list is empty' };
   jviz_list.properties.emptyDetail = { type: String, reflectToAttribute: true };
 
-  //List attached
-  jviz_list.attached = function()
+  //List ready
+  jviz_list.ready = function()
+  {
+    //Update the buttons list
+    return this._update_buttons();
+  };
+
+  //Add new data
+  jviz_list._update_data = function(value)
+  {
+    //Set if has data
+    this.has_data = value.length !== 0;
+  };
+
+  //Update the buttons list
+  jviz_list._update_buttons = function()
   {
     //Initialize the buttons list
     var list = [];
@@ -164,13 +178,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
     //Save the new buttons list
     this.buttons = list;
-  };
-
-  //Add new data
-  jviz_list._update_data = function(value)
-  {
-    //Set if has data
-    this.has_data = value.length !== 0;
   };
 
   //Tap on item
