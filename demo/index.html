@@ -41,12 +41,12 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     ];
 
     //Add the button delete click event listener
-    el.addEventListener('click:btn:delete', function(e){ console.log('DELETE'); console.log(e.detail.index); });
+    el.addEventListener('click-btn-delete', function(e){ console.log('DELETE'); console.log(e.detail.index); });
 
     //Add the button edit click event listener
-    el.addEventListener('click:btn:edit', function(e){ console.log('EDIT'); console.log(e.detail.index); });
+    el.addEventListener('click-btn-edit', function(e){ console.log('EDIT'); console.log(e.detail.index); });
 
     //Add the item click event listener
-    el.addEventListener('click:item', function(e){ console.log('ITEM'); console.log(e.detail.index); });
+    el.addEventListener('click-item', function(e){ console.log('ITEM'); console.log(e.detail.index); });
   });
 </script>
