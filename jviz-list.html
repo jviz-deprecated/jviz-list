@@ -143,7 +143,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   jviz_list.properties.parseTitle = { type: Function };
   jviz_list.properties.parseDetail = { type: Function };
   jviz_list.properties.size = { type: Number, value: 0 };
-  jviz_list.properties.data = { type: Array, value: [], observer: '_update_data' };
+  jviz_list.properties.data = { type: Array, value: [], observer: 'reload' };
   jviz_list.properties.has_data = { type: Boolean, value: false };
   jviz_list.properties.buttons = { type: Array, value: [] };
   jviz_list.properties.emptyTitle = { type: String, reflectToAttribute: true, value: 'This list is empty' };
@@ -157,7 +157,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   };
 
   //Add new data
-  jviz_list._update_data = function()
+  jviz_list.reload = function()
   {
     //Save the number of items
     this.size = this.data.length;
