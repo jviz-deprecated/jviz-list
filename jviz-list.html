@@ -103,7 +103,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     <div id="buttons">
       <content select="jviz-list-btn"></content>
     </div>
-    <template is="dom-repeat" items="{{ data }}" index-as="index">
+    <template id="list" is="dom-repeat" items="{{ data }}" index-as="index">
       <div class="item" data-index$="{{ index }}" on-tap="_on_tap">
         <div class="content" data-index$="{{ index }}">
           <template is="dom-if" if="{{ item.title }}">
@@ -156,7 +156,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     return this._update_buttons();
   };
 
-  //Add new data
+  //Reload the data
   jviz_list.reload = function()
   {
     //Save the number of items
@@ -164,6 +164,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
     //Set if has data
     this.has_data = this.data.length !== 0;
+
+    //Render again the list
+    this.$.list.render();
   };
 
   //Display the title value
