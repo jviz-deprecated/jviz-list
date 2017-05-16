@@ -107,10 +107,10 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       <div class="item" data-index$="{{ index }}" on-tap="_on_tap">
         <div class="content" data-index$="{{ index }}">
           <template is="dom-if" if="{{ item.title }}">
-            <div class="title">{{ item.title }}</div>
+            <div class="title">{{ _get_title(item, index, data, size) }}</div>
           </template>
           <template is="dom-if" if="{{ item.detail }}">
-            <div class="detail">{{ item.detail }}</div>
+            <div class="detail">{{ _get_detail(item, index, data, size) }}</div>
           </template>
         </div>
         <div class="actions">
@@ -164,6 +164,20 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
     //Set if has data
     this.has_data = this.data.length !== 0;
+  };
+
+  //Display the title value
+  jviz_list._get_value_title = function(item, index)
+  {
+    //Check for title parser
+    return (typeof this.parseTitle === 'function') ? this.parseTitle(item, index) : item.title;
+  };
+
+  //Display the detail value
+  jviz_list._get_value_detail = function(item, index)
+  {
+    //Check for detail value
+    return (typeof this.parseDetail === 'function') ? this.parseDetail(item, index) : item.detail;
   };
 
   //Update the buttons list
