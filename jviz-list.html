@@ -140,6 +140,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
   //List properties
   jviz_list.properties = {};
+  jviz_list.properties.parseTitle = { type: Function };
+  jviz_list.properties.parseDetail = { type: Function };
+  jviz_list.properties.size = { type: Number, value: 0 };
   jviz_list.properties.data = { type: Array, value: [], observer: '_update_data' };
   jviz_list.properties.has_data = { type: Boolean, value: false };
   jviz_list.properties.buttons = { type: Array, value: [] };
@@ -154,10 +157,13 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
   };
 
   //Add new data
-  jviz_list._update_data = function(value)
+  jviz_list._update_data = function()
   {
+    //Save the number of items
+    this.size = this.data.length;
+
     //Set if has data
-    this.has_data = value.length !== 0;
+    this.has_data = this.data.length !== 0;
   };
 
   //Update the buttons list
