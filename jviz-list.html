@@ -156,6 +156,16 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     return this._update_buttons();
   };
 
+  //Reset method
+  jviz_list.reset = function()
+  {
+    //Celar the data
+    this.data = [];
+
+    //Reload the list
+    this.reload();
+  };
+
   //Reload the data
   jviz_list.reload = function()
   {
