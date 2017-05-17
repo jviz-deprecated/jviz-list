@@ -106,12 +106,8 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     <template id="list" is="dom-repeat" items="{{ data }}" index-as="index">
       <div class="item" data-index$="{{ index }}" on-tap="_on_tap">
         <div class="content" data-index$="{{ index }}">
-          <template is="dom-if" if="{{ item.title }}">
-            <div class="title">{{ _get_title(item, index, data, size) }}</div>
-          </template>
-          <template is="dom-if" if="{{ item.detail }}">
-            <div class="detail">{{ _get_detail(item, index, data, size) }}</div>
-          </template>
+          <div class="title">{{ _get_title(item, index, data, size) }}</div>
+          <div class="detail">{{ _get_detail(item, index, data, size) }}</div>
         </div>
         <div class="actions">
           <template is="dom-repeat" items="{{ buttons }}" as="btn">
